@@ -1,5 +1,5 @@
 Instructions
-A New Repository named MindArc_Frontend_Angika
+A New Repository named MindArc
 
 -----
 Work1
