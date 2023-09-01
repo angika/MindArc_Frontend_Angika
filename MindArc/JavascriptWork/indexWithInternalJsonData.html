@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Javascript Tan & Accordion</title>
+        <link rel="stylesheet" type="text/css" href="source/css/style.css" />
+        <script type="text/javascript" src="source/js/jQuery.js"></script>
+    </head>
+    <body>
+      	<main>
+        		<div class="container">
+          			<div class="list">				
+          			</div>
+        		</div>
+      	</main>
+    </body>
+</html>
+<script type="text/javascript">
+// Json Data
+var data = [
+  {
+    "title": "Section 1",
+    "content": "<p>Maecenas nec semper ante, pellentesque posuere lorem. Nullam ipsum massa, consequat eget urna ut, pulvinar dignissim lorem. Nulla facilisi. Nam mattis eleifend metus. Fusce at commodo lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus pellentesque elit sem, vel blandit posuere.</p>"
+  },
+  {
+    "title": "Section 2",
+    "content": "<p>Mauris a orci sodales, scelerisque velit vitae, gravida nisl. Ut non laoreet eros, vel laoreet nisi. Praesent sed dolor dui. Proin non fringilla quam. Aliquam erat volutpat. Vestibulum vel arcu semper, lobortis turpis ac, ultricies nisi. Praesent id.</p>"
+  },
+  {
+    "title": "Section 3",
+    "content": "<p>Sed elementum sapien ut sapien imperdiet, eu venenatis enim rhoncus. Praesent euismod tincidunt rhoncus. Duis cras amet:</p><ul><li>List item one</li><li>List item two</li><li>List item three</li></ul>"
+  },
+  {
+    "title": "Section 4",
+    "content": "<p>Cras dictum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia mauris vel est.</p><p>Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>"
+  }
+];
+
+$(document).ready(function() {
+         // Declare variables
+         var list = $('.list');
+         var htmlData = '';
+         // Looping data
+         $.each(data,function(index, data){
+         		  htmlData += '<div class="listitem"><div class="header"><a href="#tab'+index+'">'+data.title+'</a></div><div id="tab'+index+'" class="content"><p>'+data.content+'</p></div></div>';
+         });
+         // Bind html content
+         list.html(htmlData);
+
+         if($(window).width() < 650) //Accordion
+          {
+               $.each($('.list .listitem .header'),function(count, item) {      
+                $(this).on('click',function(e) {
+                      if ($(this).hasClass("active")) {
+                        $(this).removeClass("active");
+                        $(this).siblings(".content").slideUp(200);
+                      } else {
+                        $(".list .listitem > .header").removeClass("active");
+                        $(this).addClass("active");
+                        $(".content").slideUp(200);
+                        $(this).siblings(".content").slideDown(200);
+                      }
+                });  
+             }).eq(0).click().addClass('active'); 
+          } else { //Tab
+             $.each($('.list .listitem a'),function(count, item) {      
+                $(this).on('click',function() {
+                   // Hide all div content
+                   list.find('div').removeClass('active');
+                   var current = $(this).attr('href');
+                   // Remove active class on links
+                   $('.list .listitem a').removeClass('active');
+                   // Set active class on current and ul parent
+                   $(this).addClass('active');
+                   $(this).parents('.list').find('.listitem').removeClass('active');
+                   $(this).parent().addClass('active');
+                   // Show current container
+                   $(current).addClass('active');
+                });  
+             }).eq(0).click().addClass('active'); 
+          }          
+    });
+</script>

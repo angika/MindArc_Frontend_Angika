@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Javascript Tan & Accordion</title>
+        <link rel="stylesheet" type="text/css" href="source/css/style.css" />
+        <script type="text/javascript" src="source/js/jQuery.js"></script>
+    </head>
+    <body>
+      	<main>
+        		<div class="container">
+          			<div class="list" id="list">				
+          			</div>
+        		</div>
+      	</main>
+    </body>
+</html>
+<script type="text/javascript">
+
+// Get JSON file using getJSON method.
+function getJSON(path, success, error) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        success(JSON.parse(xhr.responseText));
+      }
+      else {
+        error(xhr);
+      }
+    }
+  };
+  xhr.open('GET', path, true);
+  xhr.send();
+}
+
+getJSON("source/data.json", jsonData,'jsonp');
+
+function jsonData(data)
+{
+    var list = document.getElementById('list');
+    var htmlData = '';
+    for (let i = 0; i < data.length; i++) {
+        htmlData += '<div class="listitem"><div class="header"><a href="#tab'+i+'">'+data[i].title+'</a></div><div id="tab'+i+'" class="content"><p>'+data[i].content+'</p></div></div>';
+    }
+    list.innerHTML = htmlData;
+
+
+}
+
+
+/*$(document).ready(function() {
+      $.getJSON('source/data.json', function(jsonData) {
+         // Declare variables
+         var list = $('.list');
+         var htmlData = '';
+         // Looping data
+         $.each(jsonData,function(index, data){
+         		  htmlData += '<div class="listitem"><div class="header"><a href="#tab'+index+'">'+data.title+'</a></div><div id="tab'+i+'" class="content"><p>'+data.content+'</p></div></div>';
+         });
+         // Bind html content
+         list.html(htmlData);
+
+         if($(window).width() < 650) //Accordion
+          {
+               $.each($('.list .listitem .header'),function(count, item) {      
+                $(this).on('click',function(e) {
+                      if ($(this).hasClass("active")) {
+                        $(this).removeClass("active");
+                        $(this).siblings(".content").slideUp(200);
+                      } else {
+                        $(".list .listitem > .header").removeClass("active");
+                        $(this).addClass("active");
+                        $(".content").slideUp(200);
+                        $(this).siblings(".content").slideDown(200);
+                      }
+                });  
+             }).eq(0).click().addClass('active'); 
+          } else { //Tab
+             $.each($('.list .listitem a'),function(count, item) {      
+                $(this).on('click',function() {
+                   // Hide all div content
+                   list.find('div').removeClass('active');
+                   var current = $(this).attr('href');
+                   // Remove active class on links
+                   $('.list .listitem a').removeClass('active');
+                   // Set active class on current and ul parent
+                   $(this).addClass('active');
+                   $(this).parents('.list').find('.listitem').removeClass('active');
+                   $(this).parent().addClass('active');
+                   // Show current container
+                   $(current).addClass('active');
+                });  
+             }).eq(0).click().addClass('active'); 
+          }          
+    });  
+});*/
+</script>
