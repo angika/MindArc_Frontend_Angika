@@ -1,40 +1,55 @@
-Introduction
----
-Thanks for taking the time to complete this frontend technical assessment. We will be focusing on software quality (scalability, readability, maintainability, etc.) and your eye for detail. For styling, please use LESS, SASS or CSS without a UI library such as Bootstrap. For JavaScript, please use jQuery, KnockoutJS or vanilla JS. Along with following best practices, there will be bonus points for following our [coding guidelines](https://github.com/mindarc/frontend-assessment/wiki/Coding-guidelines). 
+Instructions
+A New Repository named MindArc_Frontend_Angika
 
-Exercise 1
----
+-----
+Work1
+-----
 Build a responsive page based on the designs.
 
-##### Requirements
-1. Match the designs exactly.
-2. Needs to be responsive and fluid.
+Solution:
+--------
 
-##### Designs
-* exercise1-desktop.png
-* exercise1-mobile.png
+Developed responive design for both Desktop and Mobile devices. I have also added accessiblity attributes to the HTML Tags to be accessed by all users.
 
-##### Assets
-* Desktop banner - https://via.placeholder.com/1920x650
-* Mobile banner - https://via.placeholder.com/600x600
-* Content images - https://via.placeholder.com/400x300
+Just to avoid the performance issues, I haven't used background Images as that's best coding practice.
 
-Exercise 2
----
-Read the `data.json` file and display the data as tabs on desktop and an accordion on mobile.
+The layout has been designed using Flex Box.
 
-##### Requirements
-1. Display data in tabs on desktop.
-2. Display data in an accordion on mobile.
-3. Only 1 accordion/tab should be open at a time.
-4. Open the first accordion/tab on load.
-5. If the open accordion is selected, close it.
+No External libraries been used as its been Designed using only HTML and CSS so this can run directly on the browser without need for any servers.
 
-###### Bonus points
-* Improve the user experience with meaningful animations/transitions.
-* Design and styling.
-* Explain why the result of `('b' + 'a' + + 'a' + 'a').toLowerCase()` is `banana`.
 
-Submission
----
-We recommend submitting your completed assessment as a forked repository. Please replace README content with instructions and relevant documentation.
+-----
+Work2
+-----
+Read the data.json file and display the data as tabs on desktop and an accordion on mobile.
+
+Solution:
+--------
+
+The Implementation was performed using JQuery and CSS. The same container is being used as Tab in Desktop and accordian for Mobile.
+
+The effects has been provided using JQuery for accordian. 
+
+The animation effects are Implemented using CSS. 
+
+Here I have provided two Index file ( Internal Json Data that can be access directly on the browser and an External Data that requires a server to be accessed) 
+
+
+Bonus Question
+Explain why the result of ('b' + 'a' + + 'a' + 'a').toLowerCase() is banana.
+
+Explanation
+-----------
+
+- Values within quotes are always a string and + is a concatenation operator to combine strings.
+
+- First two values 'b' and 'a' are concatenated to become ba
+
+- The Next two plus(++) operator are called unary operator which represents an Increment sign but the string 'a' next to it will be considered not a number and an error output is thrown as NaN. [++ 'a']
+
+- Now, the third string 'a' with the plus(+) operator combines it with the previous results. Hence it becomes (baNaNa).toLowercase()
+
+- Finally, the toLowercase() method in Javascript returns the string into lower case making the resultant as banana.
+
+
+-- Angika
