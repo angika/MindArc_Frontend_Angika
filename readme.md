@@ -26,9 +26,9 @@ Read the data.json file and display the data as tabs on desktop and an accordion
 Solution:
 --------
 
-The Implementation was performed using JQuery and CSS. The same container is being used as Tab in Desktop and accordian for Mobile.
+The Implementation was performed using JQuery and CSS. The same container is being used as Tab in Desktop and accordion for Mobile.
 
-The effects has been provided using JQuery for accordian. 
+The effects has been provided using JQuery for accordion. 
 
 The animation effects are Implemented using CSS. 
 
